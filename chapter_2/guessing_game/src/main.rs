@@ -15,9 +15,11 @@ fn main() {
     // let guess = String::new();
 
     // std function returns an instance of std::io::stdin which is a type that represents a handle to the standard input of the terminal. 
-    // .read_line(&mut guess) reads the users input handle in the terminal and saves it to the mutable variable 'guess' 
+    // .read_line(&mut guess) reads the users input handle in the terminal and saves it to the mutable variable 'guess'. .read_line() also returns an io::Result (specific version of a sub-module), they are enums (Ok or Err)
     // & means the variable reference, this prevents the code making multiple copies and wasting memory. 
-    io::stdin().read_line(&mut guess).expect("Failed to read line");
-
+    io::stdin().read_line(&mut guess)
+        // .expect() is handling the error that may return from .read_line(). This is the Result.
+        .expect("Failed to read line");
+    // prints the users saved input into {}
     println!("You guessed: {}", guess);
 }
