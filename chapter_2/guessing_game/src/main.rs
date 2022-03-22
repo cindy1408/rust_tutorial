@@ -1,10 +1,15 @@
 // bringing input and output library into scope (io) from the standard library (std).
 use std::io; 
+use rand::Rng; 
 
 fn main() {
     println!("Guess the number!");
 
     println!("Please input your guess");
+
+    let secret_number = rand::thread_rng().gen_range(1, 101);
+
+    println!("The secret number is : {}", secret_number);
 
     //declaring a mutable varible (mut) and storing user's input (in this case it's the result of String::new() function - which returns a new instance of a string)
     // ::new() indicates that 'new' is the associate function of the String type, associate function is implemented on the type (also known as static method) rather then a particular instance of a type (eg. String). 
