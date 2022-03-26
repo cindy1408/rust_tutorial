@@ -1,5 +1,6 @@
 // bringing input and output library into scope (io) from the standard library (std).
 use std::io; 
+use std::cmp::Ordering;
 use rand::Rng; 
 
 fn main() {
@@ -27,4 +28,10 @@ fn main() {
         .expect("Failed to read line");
     // prints the users saved input into {}
     println!("You guessed: {}", guess);
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too Big!"), 
+        Ordering::Greater => println!("Too Small!"),
+        Ordering::Equal => println!("You Win!"),
+    }
 }
