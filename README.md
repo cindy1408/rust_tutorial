@@ -15,5 +15,7 @@ Chapter 1
 
 // use cargo build --release to compile it with optimisation (creates a build in target/release instead of target/debug)
 
+// rustc main.rs and then run ./main
+
 
  Chapter 2
