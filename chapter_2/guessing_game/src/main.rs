@@ -26,6 +26,9 @@ fn main() {
     io::stdin().read_line(&mut guess)
         // .expect() is handling the error that may return from .read_line(). This is the Result.
         .expect("Failed to read line");
+
+    let guess : u32 = guess.trim().parse()
+        .expect("Please type a number!");
     // prints the users saved input into {}
     println!("You guessed: {}", guess);
 
