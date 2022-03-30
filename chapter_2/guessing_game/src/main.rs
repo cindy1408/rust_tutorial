@@ -32,7 +32,9 @@ fn main() {
     // prints the users saved input into {}
     println!("You guessed: {}", guess);
 
+    // match guess and secret_number
     match guess.cmp(&secret_number) {
+        // Less, Greater and Equal are Enums of Ordering library.
         Ordering::Less => println!("Too Big!"), 
         Ordering::Greater => println!("Too Small!"),
         Ordering::Equal => println!("You Win!"),
