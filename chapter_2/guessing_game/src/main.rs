@@ -39,4 +39,5 @@ fn main() {
         Ordering::Greater => println!("Too Small!"),
         Ordering::Equal => println!("You Win!"),
     }
+    // continue
 }
