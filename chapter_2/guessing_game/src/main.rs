@@ -3,16 +3,17 @@ use std::io;
 use std::cmp::Ordering;
 use rand::Rng; 
 
+// prelude are items that are defined in th standard linraray that are bought into the scope of every program. items that are not prelude will need to use the keywork "use"
+
 fn main() {
     println!("Guess the number!");
 
     println!("Please input your guess");
 
+
+    let secret_number = rand::thread_rng().gen_range(1..101);
+
     loop {
-
-        let secret_number = rand::thread_rng().gen_range(1, 101);
-
-        println!("The secret number is : {}", secret_number);
 
         //declaring a mutable varible (mut) and storing user's input (in this case it's the result of String::new() function - which returns a new instance of a string)
         // ::new() indicates that 'new' is the associate function of the String type, associate function is implemented on the type (also known as static method) rather then a particular instance of a type (eg. String). 
@@ -30,8 +31,11 @@ fn main() {
         // .expect() is handling the error that may return from .read_line(). This is the Result.
         .expect("Failed to read line");
 
-        let guess : u32 = guess.trim().parse()
-            .expect("Please type a number!");
+        let guess : u32 = match guess.trim().parse() {
+            Ok(num) => num, 
+            Err(_) => continue,
+        };
+
         // prints the users saved input into {}
         println!("You guessed: {}", guess);
 
@@ -40,8 +44,14 @@ fn main() {
             // Less, Greater and Equal are Enums of Ordering library.
             Ordering::Less => println!("Too Small!"), 
             Ordering::Greater => println!("Too Big!"),
-            Ordering::Equal => println!("You Win!"),
+            Ordering::Equal => {
+                println!("You Win!"); 
+                break;
+            }
         }
+
+        // println() is a macro that prints a string to the screen 
+        // println!("The secret number is : {}", secret_number);
     }
 
 }
