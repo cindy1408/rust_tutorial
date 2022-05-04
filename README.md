@@ -1,5 +1,7 @@
 # rust_tutorial
 
+Summaries
+
 Chapter 1 
 
 // cargo build will create an executable file
@@ -19,3 +21,16 @@ Chapter 1
 
 
  Chapter 2
+
+Guessing project 
+
+
+ Chapter 3 
+
+ VARIABLES and MUTABILITY
+ 
+ constants are declared using the keyword const and a data type is also required 
+
+ mut keywords allows you to reassign the variable (shadowing), that means the data type will still have to remain the same and as it's reassigned, inner scopes will still reassign declared mut variables in outer scope 
+
+ let keyword will allow you to redeclare the variable, which means they can have different types of data. let variables assigned in inner scopes will not effect the same let variables declared in outscope as the inner scope variable is a new variable with the same used name. 
