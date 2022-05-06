@@ -22,7 +22,7 @@ Chapter 1
 
  Chapter 2
 
-Guessing project 
+    Guessing project 
 
 
  Chapter 3 
@@ -34,3 +34,9 @@ Guessing project
  mut keywords allows you to reassign the variable (shadowing), that means the data type will still have to remain the same and as it's reassigned, inner scopes will still reassign declared mut variables in outer scope 
 
  let keyword will allow you to redeclare the variable, which means they can have different types of data. let variables assigned in inner scopes will not effect the same let variables declared in outscope as the inner scope variable is a new variable with the same used name. 
+
+ FUNCTIONS 
+ 
+ functions are denoted with fn, parameters must include the argument name and type, multiple ones requires commas for seperations 
+ return functions does not need any 'return' for value but it must be declared after the parameters... denoted by (->) then followed by the type
+ char type is for one character where as a str is for a collection of chars
