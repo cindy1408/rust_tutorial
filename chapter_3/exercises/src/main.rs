@@ -16,11 +16,18 @@ fn convert_temperature(temperature : f32, unit : char) -> f32{
 }
 
 fn nth_fibonacci(nth : i32) -> i32 {
+    let mut sequence:[i32;2]=[0,1];
+    for i in 1..sequence.len() {
+        sequence[i+1]=sequence[i]+sequence[i-1];
+        if sequence.len() as i32 == nth {
+            return sequence[i+1]
+        }
+    }
     return 0 
 }
 
 fn christmas_carol() {
-    let _days = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"]; 
+    let days = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"]; 
     let individual_gift = [
         "A partridge in a pear tree",
         "Two turtle doves ", 
