@@ -3,13 +3,11 @@ use std::io;
 use std::cmp::Ordering;
 use rand::Rng; 
 
-// prelude are items that are defined in th standard linraray that are bought into the scope of every program. items that are not prelude will need to use the keywork "use"
+// prelude are items that are defined in th standard libary that are bought into the scope of every program. items that are not prelude will need to use the keywork "use"
 
 fn main() {
     println!("Guess the number!");
-
     println!("Please input your guess");
-
 
     let secret_number = rand::thread_rng().gen_range(1..101);
 
