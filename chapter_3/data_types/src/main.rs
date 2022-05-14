@@ -1,3 +1,5 @@
+use std::io; 
+
 fn main() {
     // every value in Rust has a data type 
     // there are 2 types of data type: scalar and compound
@@ -7,8 +9,8 @@ fn main() {
 
     // Scalar Types -> represents a single value, there are 4 sclar types: integers, floating-point, bumbers, Booleans and characters. 
     
-    let signedInt: i32 // <- this variable is signed integer that takes up 32 bits of space (positive or negative sign) this is also the default
-    let unsignedInt: u128 // <- this variable is unsigned and takes up 128 bits of space 
+    let signedInt: i32; // <- this variable is signed integer that takes up 32 bits of space (positive or negative sign) this is also the default
+    let unsignedInt: u128; // <- this variable is unsigned and takes up 128 bits of space 
 
     let x = 2.0; // f64
     let y: f32 = 3.0; // f32
@@ -28,7 +30,7 @@ fn main() {
 
     let t = true; 
 
-    let f: bool = false // this include explicit type notation 
+    let f: bool = false; // this include explicit type notation 
 
     // THE CHARACTER TYPE - most primitive alphabetic type, these are in single quotation marks
     // they are 4 bytes in size and represents a Unicode Scalar Value (can represent more than just ASCII)
@@ -43,7 +45,7 @@ fn main() {
 
         // 1. THE TUPLE TYPE - grouping together a number of values with a variety of types into one compound type, they have a fixed length and size. 
 
-        let tup: (i32, f64, u8) = (500, 6.5, 1) // the variable tup binds to the entire tuple as a single compound element. 
+        let tup: (i32, f64, u8) = (500, 6.5, 1); // the variable tup binds to the entire tuple as a single compound element. 
         // use pattern matching to destructure a tuple value: 
 
         let (x, y, z) = tup; 
@@ -70,7 +72,7 @@ fn main() {
 
         let a: [i32; 5] = [1, 2, 3, 4, 5];  // this specifies the array is i32 type with a length of 5 elements
 
-        let a = [3; 5] // means : initalising the array with 5 3s in the array
+        let a = [3; 5]; // means : initalising the array with 5 3s in the array
 
         let a = [3, 3, 3, 3, 3, 3]; 
 
@@ -78,5 +80,26 @@ fn main() {
         let second = a[1]; 
         
         // trying to access an array that does not exist eg a[10]; 
+
+        let a = [1, 2, 3, 4, 5];
         
+        println!("Please enter an array index."); 
+
+        let mut index = String::new(); 
+
+        io::stdin()
+            .read_line(&mut index)
+            .expect("Failed to read line");
+
+        let index: usize = index 
+            .trim()
+            .parse()
+            .expect("Index entered was not a number");
+
+        let element = a[index]; 
+
+        println!(
+            "The value of the element at index {} is: {}", 
+            index, element
+        );
 }
