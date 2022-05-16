@@ -7,10 +7,15 @@
 fn main() {
     //variable scope 
     // s refers to a string literal 
-    let s = "hello"; 
+    let _s = "hello"; 
 
     {
         // s is only valid in this scope
-        let s = "hello";
+        let _s = "hello";
     }
+
+    // The String Type - stored in the heap because they are mutable
+    let _s = String::from("hello");
+
+
 }

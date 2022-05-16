@@ -3,6 +3,7 @@ fn main() {
     println!("Hello, world!");
     convert_temperature(23., 'C');
     christmas_carol();
+    nth_fibonacci(4);
 }
 
 fn convert_temperature(temperature : f32, unit : char) -> f32{
