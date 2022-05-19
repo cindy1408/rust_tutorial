@@ -7,11 +7,11 @@
 fn main() {
     //variable scope 
     // s refers to a string literal 
-    let s = "hello"; 
+    let _s = "hello"; 
 
     {
         // s is only valid in this scope
-        let s = "hello";
+        let _s = "hello";
     }
     // :: operator allows us to namespace from the from function undethe String type (instead of using string_from)
     let _s = String::from("hello");
@@ -39,6 +39,9 @@ fn main() {
 
     let s1 = String::from("hello"); 
     let s2 = s1; 
+
+    // The String Type - stored in the heap because they are mutable
+    let _s = String::from("hello");
 
 
 }

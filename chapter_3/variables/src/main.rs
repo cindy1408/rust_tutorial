@@ -45,6 +45,6 @@ fn main() {
 
     // with the same spaces example, we cannot use mut keyword as the value type are still required to be the same (below will error)
     let mut spaces = "   "; // string type
-    spaces = spaces.len(); // number type
+    // spaces = spaces.len(); // number type
 
 }
