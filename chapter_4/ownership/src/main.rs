@@ -68,7 +68,7 @@ fn main() {
     let s = String::from("hello");
 
     takes_ownership(s); // variable s is no longer valid.. as it is moved
-    println!("{}", s); // not valid! 
+    // println!("{}", s); // not valid! 
 
     let x = 5; 
     
@@ -85,10 +85,51 @@ fn main() {
 
     let s1 = String::from("hello");
 
-    let (s2, len) = calculate_length(s1); 
+    let (s2, len) = calculate_length_ownership(s1); 
 
     println!("The length of '{}' is {}.", s2, len);
 
+
+    // REFERENCES AND BORROWING 
+    // a reference is guaranteed to point to a valid value of a particular type 
+
+    let s1 = String::from("hello");
+    // &s creates a reference that refers to the value of s1 but does not own it, as it doesn't own it, the value it points to will not be dropped when the reference stops being used. 
+    let len = calculate_length_reference(&s1);
+
+    let mut mut_string = String::from("hello");
+
+    change(&mut mut_string); 
+
+    // multiple references can be down by creating new scopes 
+
+    let mut s = String::from("hello");
+    {
+        let r1 = &mut s; 
+    } // r1 goes out of scope here, so we can ake a new reference 
+
+    let r2 = &mut s; 
+
+    let mut s = String::from("hello");
+
+    let r1 = &s; 
+    let r2 = &s;
+    // let r3 = &mut s; //PROBLEM, mut s is still borrowed hence cannot be borrowed again
+
+    // println!("{}, {}, and {}", r1, r2, r3); // cannot have a mutable reference while we have an immutable one to the same value.
+    println!("{} and {}", r1, r2); 
+
+    let mut s = String::from("hello"); 
+
+    let r1 = &s; 
+    let r2 = &s; 
+    println!("{} and {}", r1, r2); 
+
+    let r3 = &mut s; 
+    println!("{}", r3);
+
+    // DANGLING REFERENCES 
+    let reference_to_nothing = dangle();
 
 }
 
@@ -109,7 +150,26 @@ fn takes_and_gives_back(a_string: String) -> String {
     a_string 
 }
 
-fn calculate_length(s: String) -> (String, usize) {
+fn calculate_length_ownership(s: String) -> (String, usize) {
     let length = s.len();
     (s, length)
 }
+// this now takes in a reference string instead of a string (refers to a value without taking ownership to it)
+fn calculate_length_reference(s: &String) -> usize { // s is reference to a String 
+    s.len()
+} // s goes out of scope, but as it doesn't have ownership of what it refers to, the value pointed to by the reference is not dropped when s stops being used. 
+// When functions have references as parameters instead of actual values, we wont need to return the values in order to give back ownership, as we never had ownership in the first place
+
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
+}
+
+fn dangle() -> &String { // dangle returns a reference to a String 
+    let s = String:from("hello"); // s is the new String 
+
+    &s // return a reference to the String, s 
+} // s is out of scope and is dropped, the memory is gone. 
+
+fn no_dangle() -> String {
+    let s = String::from("hello");
+} // ownership has been moved out and memory has not been deallocated 

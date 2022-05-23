@@ -38,3 +38,22 @@ pushing to the stack is faster than allocating on the heap and accessign data in
 the values (including pointers to the data) and the functions local variables from when the function is being called, gets pushed onto the stack. When the function is over, those values are popped off the stack. 
 
 Ownership needs to keep track of the code data that are on the heap, remove duplicates data and cleaning up unused data on the heap. 
+
+Creating a reference is called borrowing.
+Reference is guareanteed to point to a valid value of a particular type, when that reference is out of scope, the value will not be dropped as reference does not take ownership.
+Functions that only takes in references wont need to return the value to pass the ownership to another variable as it never had the ownership in the first place. References cannot be modified! (they're immutatable)
+
+Immutable references can only be mutable if we add mut ie.. &mut some_string but this only allows one mut reference. This prevents data races at compile time. 
+
+Race conditions happens when: 
+- two or more pointers access the same data at the same time 
+- at least one of the pointers is being used to write to the data 
+- there is no mechanism being used to synchronize access to the data. 
+
+multiple mutable references can be done by creating new scopes but not simultaneous mutable references
+
+Dangling References 
+Happens when a pointer that references a location in memory that has already given to someone else, by freeing some memory while preserving a pointer to that memory. In Rust, the compuler ensures that the reference will never be dangling references (it ensures the data will not go out of scope before the reference to the data does)
+
+At any given time, you can have either one mutable reference or any number of immutable references 
+references must always be valid 
